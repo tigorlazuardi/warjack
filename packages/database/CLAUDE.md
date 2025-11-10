@@ -104,3 +104,7 @@ bun --hot ./index.ts
 ```
 
 For more information, read the Bun API docs in `node_modules/bun-types/docs/**.md`.
+- setiap kali membuat junction table di migration, harus ada index composite 2 arah
+- semua text field yang tidak bersifat enum, atau data specific seperti url, harus dimasukkan kedalam fts5 table. Misal, title, username, atau description.
+
+fts5 table semuanya contentless, dan text search query akan menggunakan hasil join rowid (serta di rank) dari fts5 table ini.
