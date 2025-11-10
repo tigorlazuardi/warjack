@@ -1,0 +1,15 @@
+{
+  "name": "@warjack/core",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "dependencies": {
+    "@warjack/database": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

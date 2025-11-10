@@ -1,0 +1,15 @@
+{
+  "name": "warjack",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "catalog": {
+    "kysely": "^0.28.8",
+    "sury": "^11.0.0-alpha.4"
+  }
+}
