@@ -29,7 +29,7 @@
             shellHook = ''
               export PROJECT_DIR=$(git rev-parse --show-toplevel)
               export DATABASE_DIR="''${PROJECT_DIR}/artifacts/database"
-              export DATABASE_URL="sqlite:///''${DATABASE_DIR}/dev.db"
+              export DATABASE_URL="''${DATABASE_DIR}/dev.db"
 
               mkdir -p "''${DATABASE_DIR}"
             '';

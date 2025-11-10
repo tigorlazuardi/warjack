@@ -1,4 +1,3 @@
-
 Default to using Bun instead of Node.js.
 
 - Use `bun <file>` instead of `node <file>` or `ts-node <file>`
@@ -37,7 +36,7 @@ Use HTML imports with `Bun.serve()`. Don't use `vite`. HTML imports fully suppor
 Server:
 
 ```ts#index.ts
-import index from "./index.html"
+import index from "./index.html";
 
 Bun.serve({
   routes: {
@@ -58,13 +57,13 @@ Bun.serve({
     },
     close: (ws) => {
       // handle close
-    }
+    },
   },
   development: {
     hmr: true,
     console: true,
-  }
-})
+  },
+});
 ```
 
 HTML files can import .tsx, .jsx or .js files directly and Bun's bundler will transpile & bundle automatically. `<link>` tags can point to stylesheets and Bun's CSS bundler will bundle.
@@ -104,7 +103,9 @@ bun --hot ./index.ts
 ```
 
 For more information, read the Bun API docs in `node_modules/bun-types/docs/**.md`.
+
 - setiap kali membuat junction table di migration, harus ada index composite 2 arah
 - semua text field yang tidak bersifat enum, atau data specific seperti url, harus dimasukkan kedalam fts5 table. Misal, title, username, atau description.
 
-fts5 table semuanya contentless, dan text search query akan menggunakan hasil join rowid (serta di rank) dari fts5 table ini.
+fts5 table semuanya contentless-delete table (https://sqlite.org/fts5.html#contentless_delete_tables), dan text search query akan menggunakan hasil join rowid (serta di rank) dari fts5 table ini.
+- gunakan unixepoch subsec untuk timestamp, dan mengikuti contentless table, fts5 bisa di update dengan UPDATE tanpa delete selama semua field keisi

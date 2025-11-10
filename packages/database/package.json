@@ -12,6 +12,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "kysely-bun-sqlite": "^0.4.0"
+    "kysely": "catalog:",
+    "kysely-bun-sqlite": "catalog:"
+  },
+  "scripts": {
+    "generate": "kysely migrate latest && kysely-codegen"
   }
 }

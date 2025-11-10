@@ -10,6 +10,7 @@
   },
   "catalog": {
     "kysely": "^0.28.8",
+    "kysely-bun-sqlite": "^0.4.0",
     "sury": "^11.0.0-alpha.4"
   }
 }

@@ -1,0 +1,4 @@
+{
+  "dialect": "kysely-bun-sqlite",
+  "outFile": "src/schema.ts"
+}
