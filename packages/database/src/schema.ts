@@ -59,28 +59,6 @@ export interface DevicesSources {
   source_id: number;
 }
 
-export interface Jobs {
-  completed_at: number | null;
-  created_at: Generated<number>;
-  error_message: string | null;
-  id: Generated<number>;
-  max_retries: Generated<number>;
-  payload: string;
-  retry_count: Generated<number>;
-  started_at: number | null;
-  status: Generated<string>;
-  topic: string;
-  updated_at: Generated<number>;
-}
-
-export interface Schedules {
-  created_at: Generated<number>;
-  id: Generated<number>;
-  schedule: string;
-  source_id: number;
-  updated_at: Generated<number>;
-}
-
 export interface Sources {
   created_at: Generated<number>;
   display_name: Generated<string>;
@@ -118,22 +96,6 @@ export interface SourcesFtsIdx {
   term: string;
 }
 
-export interface TopicLocks {
-  current_job_id: number | null;
-  heartbeat_at: number;
-  locked_at: number;
-  topic: string;
-  worker_id: string;
-}
-
-export interface Workers {
-  created_at: Generated<number>;
-  current_topic: string | null;
-  last_heartbeat: number;
-  status: Generated<string>;
-  worker_id: string;
-}
-
 export interface DB {
   devices: Devices;
   devices_fts: DevicesFts;
@@ -142,14 +104,10 @@ export interface DB {
   devices_fts_docsize: DevicesFtsDocsize;
   devices_fts_idx: DevicesFtsIdx;
   devices_sources: DevicesSources;
-  jobs: Jobs;
-  schedules: Schedules;
   sources: Sources;
   sources_fts: SourcesFts;
   sources_fts_config: SourcesFtsConfig;
   sources_fts_data: SourcesFtsData;
   sources_fts_docsize: SourcesFtsDocsize;
   sources_fts_idx: SourcesFtsIdx;
-  topic_locks: TopicLocks;
-  workers: Workers;
 }
