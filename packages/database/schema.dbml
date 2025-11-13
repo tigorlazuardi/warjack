@@ -1,0 +1,71 @@
+// Database schema for Warjack Database Package
+// Generated from schema.ts
+
+Table devices {
+  id integer [pk, increment, not null]
+  name text [not null, default: ""]
+  disabled integer [not null, default: 0]
+  height integer [not null]
+  width integer [not null]
+  image_ratio_delta_range real [not null, default: 0.2]
+  min_image_height integer [not null, default: 0]
+  max_image_height integer [not null, default: 0]
+  min_image_width integer [not null, default: 0]
+  max_image_width integer [not null, default: 0]
+  min_image_filesize integer [not null, default: 0]
+  max_image_filesize integer [not null, default: 0]
+  nsfw integer [not null, default: 0]
+  created_at integer [not null, default: `unixepoch('now', 'subsec') * 1000`]
+  updated_at integer [not null, default: `unixepoch('now', 'subsec') * 1000`]
+
+  indexes {
+    name [name: "devices_name_idx"]
+  }
+
+  Note: 'FTS5 table: devices_fts (contentless-delete) for name field'
+}
+
+Table sources {
+  id integer [pk, increment, not null]
+  source_id text [not null]
+  display_name text [not null, default: ""]
+  parameter text [not null, default: "{}"]
+  created_at integer [not null, default: `unixepoch('now', 'subsec') * 1000`]
+  updated_at integer [not null, default: `unixepoch('now', 'subsec') * 1000`]
+
+  indexes {
+    source_id [name: "sources_source_id_idx"]
+  }
+
+  Note: 'FTS5 table: sources_fts (contentless-delete) for source_id, display_name, parameter fields'
+}
+
+Table devices_sources {
+  device_id integer [not null, ref: > devices.id]
+  source_id integer [not null, ref: > sources.id]
+  created_at integer [not null, default: `unixepoch('now', 'subsec') * 1000`]
+
+  indexes {
+    (device_id, source_id) [unique, name: "devices_sources_device_source_idx"]
+    (source_id, device_id) [name: "devices_sources_source_device_idx"]
+  }
+
+  Note: 'Many-to-many junction table between devices and sources with composite indexes in both directions'
+}
+
+// FTS5 Virtual Tables (contentless-delete)
+Table devices_fts {
+  rowid integer [pk, ref: - devices.id]
+  name text
+
+  Note: 'Virtual FTS5 table for full-text search on devices.name'
+}
+
+Table sources_fts {
+  rowid integer [pk, ref: - sources.id]
+  source_id text
+  display_name text
+  parameter text
+
+  Note: 'Virtual FTS5 table for full-text search on sources fields'
+}

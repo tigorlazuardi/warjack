@@ -53,6 +53,49 @@ export interface DevicesFtsIdx {
   term: string;
 }
 
+export interface DevicesSources {
+  created_at: Generated<number>;
+  device_id: number;
+  source_id: number;
+}
+
+export interface Sources {
+  created_at: Generated<number>;
+  display_name: Generated<string>;
+  id: Generated<number>;
+  parameter: Generated<string>;
+  source_id: string;
+  updated_at: Generated<number>;
+}
+
+export interface SourcesFts {
+  display_name: string | null;
+  parameter: string | null;
+  source_id: string | null;
+}
+
+export interface SourcesFtsConfig {
+  k: string;
+  v: string | null;
+}
+
+export interface SourcesFtsData {
+  block: Buffer | null;
+  id: Generated<number | null>;
+}
+
+export interface SourcesFtsDocsize {
+  id: Generated<number | null>;
+  origin: number | null;
+  sz: Buffer | null;
+}
+
+export interface SourcesFtsIdx {
+  pgno: string | null;
+  segid: string;
+  term: string;
+}
+
 export interface DB {
   devices: Devices;
   devices_fts: DevicesFts;
@@ -60,4 +103,11 @@ export interface DB {
   devices_fts_data: DevicesFtsData;
   devices_fts_docsize: DevicesFtsDocsize;
   devices_fts_idx: DevicesFtsIdx;
+  devices_sources: DevicesSources;
+  sources: Sources;
+  sources_fts: SourcesFts;
+  sources_fts_config: SourcesFtsConfig;
+  sources_fts_data: SourcesFtsData;
+  sources_fts_docsize: SourcesFtsDocsize;
+  sources_fts_idx: SourcesFtsIdx;
 }
