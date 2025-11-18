@@ -11,6 +11,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn("source_id", "integer", (col) =>
       col.notNull().references("sources.id").onDelete("cascade"),
     )
+    .addColumn("disabled", "integer", (col) => col.notNull().defaultTo(0))
     .addColumn("schedule", "text", (col) => col.notNull())
     .addColumn("created_at", "integer", (col) =>
       col.notNull().defaultTo(sql`(unixepoch('now', 'subsec') * 1000)`),

@@ -1,0 +1,2 @@
+- di project ini, harus minimalisir singleton. Sebanyak mungkin lewat dependency injection pattern kecuali untuk hal2 yang lebih baik singleton seperti tracing dan logging
+- migrasi harus dibuat menggunakan bun kysely migrate make <name> dan ada di packages/database

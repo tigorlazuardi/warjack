@@ -56,7 +56,74 @@ export interface DevicesFtsIdx {
 export interface DevicesSources {
   created_at: Generated<number>;
   device_id: number;
+  disabled: Generated<number>;
   source_id: number;
+}
+
+export interface ImageDeviceFiles {
+  created_at: Generated<number>;
+  device_id: number;
+  file_path: string;
+  id: Generated<number>;
+  image_id: number;
+}
+
+export interface Images {
+  author: string | null;
+  author_url: string | null;
+  created_at: Generated<number>;
+  download_url: string;
+  height: number;
+  id: Generated<number>;
+  nsfw: Generated<number>;
+  source_id: number;
+  title: string | null;
+  updated_at: Generated<number>;
+  website_url: string;
+  width: number;
+}
+
+export interface ImagesDevices {
+  created_at: Generated<number>;
+  device_id: number;
+  image_id: number;
+}
+
+export interface ImagesFts {
+  author: string | null;
+  title: string | null;
+  website_url: string | null;
+}
+
+export interface ImagesFtsConfig {
+  k: string;
+  v: string | null;
+}
+
+export interface ImagesFtsData {
+  block: Buffer | null;
+  id: Generated<number | null>;
+}
+
+export interface ImagesFtsDocsize {
+  id: Generated<number | null>;
+  origin: number | null;
+  sz: Buffer | null;
+}
+
+export interface ImagesFtsIdx {
+  pgno: string | null;
+  segid: string;
+  term: string;
+}
+
+export interface Schedules {
+  created_at: Generated<number>;
+  disabled: Generated<number>;
+  id: Generated<number>;
+  schedule: string;
+  source_id: number;
+  updated_at: Generated<number>;
 }
 
 export interface Sources {
@@ -104,6 +171,15 @@ export interface DB {
   devices_fts_docsize: DevicesFtsDocsize;
   devices_fts_idx: DevicesFtsIdx;
   devices_sources: DevicesSources;
+  image_device_files: ImageDeviceFiles;
+  images: Images;
+  images_devices: ImagesDevices;
+  images_fts: ImagesFts;
+  images_fts_config: ImagesFtsConfig;
+  images_fts_data: ImagesFtsData;
+  images_fts_docsize: ImagesFtsDocsize;
+  images_fts_idx: ImagesFtsIdx;
+  schedules: Schedules;
   sources: Sources;
   sources_fts: SourcesFts;
   sources_fts_config: SourcesFtsConfig;
